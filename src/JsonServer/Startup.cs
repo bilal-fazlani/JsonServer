@@ -11,22 +11,19 @@ namespace JsonServer
 {
     public class Startup
     {
-        //Microsoft.Extensions.Configuration.IConfiguration _config = null;
 
         public void Configure(IApplicationBuilder app, 
             IHostingEnvironment env, 
             ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole();
-            //loggerFactory.AddDebug();
 
             app.UseStaticFiles();
         }
 
-
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+
         }
     }
 }
