@@ -40,6 +40,17 @@ namespace JsonServer
                     Console.WriteLine(fileOption.ValueName + ":" + fileOption.Value());
                     Console.WriteLine(urlOption.ValueName + ":" + urlOption.Value());
 
+                    try
+                    {
+                        new JServer().Start();
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        return 1;
+                    }
+
+                    Console.ReadLine();
                     return 0;
                 });
             });

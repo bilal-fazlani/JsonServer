@@ -5,12 +5,9 @@
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
-
   "commands": {
     "JsonServer": "JsonServer start -f bilal --url http://localhost:5000/getItem"
   },
-
-  "contentFiles": [ "staticjson.json" ],
 
   "frameworks": {
     "dnxcore50": {
@@ -21,8 +18,19 @@
         "System.Linq": "4.0.1-beta-23516",
         "System.Threading": "4.0.11-beta-23516",
         "Newtonsoft.Json": "8.0.2",
-        "Microsoft.Extensions.CommandLineUtils.Sources": "1.0.0-rc2-16357"
+        "Microsoft.Extensions.CommandLineUtils.Sources": "1.0.0-rc2-16357",
+        "Microsoft.AspNet.Server.Kestrel": "1.0.0-rc1-final"
       }
     }
+  },
+  "dependencies": {
+    "Microsoft.AspNet.Hosting": "1.0.0-rc1-final",
+    "Microsoft.AspNet.Hosting.Abstractions": "1.0.0-rc1-final",
+    "Microsoft.AspNet.Http.Abstractions": "1.0.0-rc1-final",
+    "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
+    "Microsoft.AspNet.StaticFiles": "1.0.0-rc1-final",
+    "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final",
+    "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc2-15888",
+    "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final"
   }
 }
