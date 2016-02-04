@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
+﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace JsonServer
+namespace StupidWebServer
 {
     public class Startup
     {
@@ -18,12 +14,13 @@ namespace JsonServer
         {
             loggerFactory.AddConsole();
 
-            app.UseStaticFiles();
+            app.UseStupidMiddleware();
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddSingleton<IRoutingService, RoutingService>();
+            services.AddSingleton<IMimeTypeResolver, MimeTypeResolver>();
         }
     }
 }

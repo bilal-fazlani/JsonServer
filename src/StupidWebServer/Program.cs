@@ -1,10 +1,8 @@
-﻿using Microsoft.Dnx.Runtime.Common.CommandLine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Threading.Tasks;
+using Microsoft.Dnx.Runtime.Common.CommandLine;
 
-namespace JsonServer
+namespace StupidWebServer
 {
     public class Program
     {
@@ -17,11 +15,14 @@ namespace JsonServer
                 FullName = "JSON Server",
             };
 
+            app.HelpOption("-h|--help");
+
             app.Command("start", command =>
             {
                 command.Description = "Starts the json file server";
                 var fileOption = command.Option("-f|--file <FILE>", "json file to read", CommandOptionType.SingleValue);
                 var urlOption = command.Option("-u|--url <URL>", "url to host the service", CommandOptionType.SingleValue);
+                command.HelpOption("-h|--help");
 
                 command.OnExecute(() =>
                 {
@@ -37,12 +38,9 @@ namespace JsonServer
                         return 1;
                     }
 
-                    Console.WriteLine(fileOption.ValueName + ":" + fileOption.Value());
-                    Console.WriteLine(urlOption.ValueName + ":" + urlOption.Value());
-
                     try
                     {
-                        new JServer().Start();
+                        new JServer().Start(fileOption.Value(), urlOption.Value());
                     }
                     catch(Exception ex)
                     {
@@ -50,13 +48,17 @@ namespace JsonServer
                         return 1;
                     }
 
-                    Console.ReadLine();
                     return 0;
                 });
             });
 
+            app.OnExecute(() =>
+            {
+                app.ShowHelp();
+                return 2;
+            });
+
             app.Execute(args);
-            Console.ReadLine();
             return 0;
         }
     }

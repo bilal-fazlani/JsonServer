@@ -1,12 +1,13 @@
 ﻿{
   "version": "1.0.0-*",
-  "description": "JsonServer Console Application",
+  "description": "StupidJsonServer Console Application",
   "authors": [ "bfazlani" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
   "commands": {
-    "JsonServer": "JsonServer start -f bilal --url http://localhost:5000/getItem"
+    "StupidWebServer": "StupidWebServer",
+    "DebugServer": "StupidWebServer start -f D:\\Repos\\StupidWebServer\\src\\StupidWebServer\\wwwroot\\staticjson.json -u http://localhost:4300/myjson"
   },
 
   "frameworks": {
