@@ -7,7 +7,7 @@
   "licenseUrl": "",
   "commands": {
     "StupidWebServer": "StupidWebServer",
-    "DebugServer": "StupidWebServer start -f D:\\Repos\\StupidWebServer\\src\\StupidWebServer\\wwwroot\\staticjson.json -u http://localhost:4300/myjson"
+    "DebugServer": "StupidWebServer servefile -f project.json"
   },
 
   "frameworks": {

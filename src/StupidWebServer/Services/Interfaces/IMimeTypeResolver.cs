@@ -1,4 +1,4 @@
-﻿namespace StupidWebServer
+﻿namespace StupidWebServer.Services.Interfaces
 {
     public interface IMimeTypeResolver
     {

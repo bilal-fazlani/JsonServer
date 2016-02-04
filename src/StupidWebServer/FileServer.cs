@@ -2,24 +2,26 @@
 using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using StupidWebServer.Middlewares;
+using StupidWebServer.Services;
+using StupidWebServer.Services.Interfaces;
 
 namespace StupidWebServer
 {
-    public class Startup
+    public class FileServer
     {
-
         public void Configure(IApplicationBuilder app, 
             IHostingEnvironment env, 
             ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole();
 
-            app.UseStupidMiddleware();
+            app.UseStupidFileMiddleware();
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IRoutingService, RoutingService>();
+            services.AddInstance<IRoutingService>(FileRoutingService.Instance);
             services.AddSingleton<IMimeTypeResolver, MimeTypeResolver>();
         }
     }

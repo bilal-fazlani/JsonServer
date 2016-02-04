@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using StupidWebServer.Services.Interfaces;
 
-namespace StupidWebServer
+namespace StupidWebServer.Services
 {
     class MimeTypeResolver : IMimeTypeResolver
     {

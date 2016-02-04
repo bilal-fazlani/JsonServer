@@ -3,16 +3,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Http.Extensions;
+using StupidWebServer.Services.Interfaces;
 
-namespace StupidWebServer
+namespace StupidWebServer.Middlewares
 {
-    public class StupidMiddleware
+    public class StupidDirectoryMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly IRoutingService _routingService;
         private readonly IMimeTypeResolver _mimeTypeResolver;
 
-        public StupidMiddleware(RequestDelegate next,
+        public StupidDirectoryMiddleware(RequestDelegate next,
             IRoutingService routingService,
             IMimeTypeResolver mimeTypeResolver)
         {
@@ -25,7 +26,7 @@ namespace StupidWebServer
         {
             string currentUrl = httpContext.Request.GetDisplayUrl();
 
-            string filePath = _routingService[currentUrl];
+            string filePath = _routingService.GetPathForUrl(currentUrl);
 
             if (filePath != null)
             {
@@ -46,18 +47,9 @@ namespace StupidWebServer
             }
         }
 
-
         private string GetFileExtension(string filePath)
         {
             return Path.GetExtension(filePath);
-        }
-    }
-
-    public static class StupidMiddlewareExtensions
-    {
-        public static IApplicationBuilder UseStupidMiddleware(this IApplicationBuilder builder)
-        {
-            return builder.UseMiddleware<StupidMiddleware>();
         }
     }
 }
